@@ -23,6 +23,7 @@ class MyClient(discord.Client):
             print('Message from {0.author}: {0.content}'.format(message))
 
         if message.content.lower() in blocked_phrases:
+            print('Blocked Message {0.author}: {0.content}'.format(message))
             await message.delete()
             await message.author.create_dm()
             await message.author.dm_channel.send(
