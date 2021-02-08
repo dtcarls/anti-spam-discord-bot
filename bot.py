@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
+DEBUG = os.getenv('DEBUG')
 
 if(not TOKEN):
     print("DISCORD_TOKEN not defined in your .env file")
@@ -18,7 +19,9 @@ class MyClient(discord.Client):
     async def on_message(self, message):
         if message.author == client.user:
             return
-        print('Message from {0.author}: {0.content}'.format(message))
+        if DEBUG:
+            print('Message from {0.author}: {0.content}'.format(message))
+
         if message.content.lower() in blocked_phrases:
             await message.delete()
             await message.author.create_dm()
