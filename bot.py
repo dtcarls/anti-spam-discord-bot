@@ -11,6 +11,7 @@ if(not TOKEN):
     quit()
 
 blocked_phrases = ['lol', 'l0l', 'lewl', 'rofl', 'lolol' 'ha', 'haha']
+blocked_file = open('blocked.txt', 'w')
 
 class MyClient(discord.Client):
     async def on_ready(self):
@@ -23,7 +24,7 @@ class MyClient(discord.Client):
             print('Message from {0.author}: {0.content}'.format(message))
 
         if message.content.lower() in blocked_phrases:
-            print('Blocked Message {0.author}: {0.content}'.format(message))
+            print('Blocked Message {0.author}: {0.content}'.format(message), file = blocked_file)
             await message.delete()
             await message.author.create_dm()
             await message.author.dm_channel.send(
@@ -32,3 +33,4 @@ class MyClient(discord.Client):
 
 client = MyClient()
 client.run(TOKEN)
+blocked_file.close()
