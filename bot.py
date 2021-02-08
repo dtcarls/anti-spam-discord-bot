@@ -21,7 +21,7 @@ class MyClient(discord.Client):
         if message.author == client.user:
             return
         if DEBUG:
-            print('Message from {0.author}: {0.content}'.format(message))
+            print('Blocked Message {0.author}: {0.content}'.format(message))
 
         if message.content.lower() in blocked_phrases:
             print('Blocked Message {0.author}: {0.content}'.format(message), file = blocked_file)
