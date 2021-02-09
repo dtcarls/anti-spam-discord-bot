@@ -10,7 +10,7 @@ if(not TOKEN):
     print("DISCORD_TOKEN not defined in your .env file")
     quit()
 
-blocked_phrases = ['lol', 'l0l', 'lewl', 'rofl', 'lolol' 'ha', 'haha']
+blocked_phrases = ['lol', 'l0l', 'lewl', 'rofl', 'lolol' 'ha', 'haha', '|o|', '|0|', 'ioi', 'i0i', 'loi', 'l0i', 'i0l', 'iol']
 blocked_file = open('blocked.txt', 'w')
 
 class MyClient(discord.Client):
@@ -23,7 +23,8 @@ class MyClient(discord.Client):
         if DEBUG:
             print('Message {0.author}: {0.content}'.format(message))
 
-        if message.content.lower() in blocked_phrases:
+        stripped_msg = "".join(message.content.lower().split()).replace(",","").replace(".","")
+        if stripped_msg in blocked_phrases:
             print('Blocked Message {0.author}: {0.content}'.format(message), file = blocked_file)
             await message.delete()
             await message.author.create_dm()
