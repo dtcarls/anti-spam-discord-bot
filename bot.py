@@ -18,12 +18,12 @@ class MyClient(discord.Client):
         print('Logged on as {0}! READY!'.format(self.user))
 
     async def on_message(self, message):
-        if message.author == client.user:
+        if message.author == client.user or message.attachments:
             return
         if DEBUG:
             print('Message {0.author}: {0.content}'.format(message))
 
-        stripped_msg = "".join(message.content.lower().split()).replace(",","").replace(".","")
+        stripped_msg = "".join(message.content.lower().split()).replace(",","").replace(".","").replace("!","")
         if stripped_msg in blocked_phrases:
             print('Blocked Message {0.author}: {0.content}'.format(message), file = blocked_file)
             await message.delete()
