@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 DEBUG = os.getenv('DEBUG')
+PASSIVE = os.getenv('PASSIVE').lower()
 
 if(not TOKEN):
     print("DISCORD_TOKEN not defined in your .env file")
@@ -26,11 +27,14 @@ class MyClient(discord.Client):
         stripped_msg = "".join(message.content.lower().split()).replace(",","").replace(".","").replace("!","")
         if stripped_msg in blocked_phrases:
             print('Blocked Message {0.author}: {0.content}'.format(message), file = blocked_file)
-            await message.delete()
-            await message.author.create_dm()
-            await message.author.dm_channel.send(
-                f'Hi {message.author}, `{message.content}` by itself doesn\'t really contribute much to the conversation. Consider adding a reaction or expanding your comment instead.'
-            )
+            if PASSIVE=='true':
+                await message.add_reaction('\U0001F92C')
+            else:
+                await message.delete()
+                await message.author.create_dm()
+                await message.author.dm_channel.send(
+                    f'Hi {message.author}, `{message.content}` by itself doesn\'t really contribute much to the conversation. Consider adding a reaction or expanding your comment instead.'
+                )
 
 client = MyClient()
 client.run(TOKEN)
