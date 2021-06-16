@@ -11,7 +11,7 @@ if(not TOKEN):
     print("DISCORD_TOKEN not defined in your .env file")
     quit()
 
-blocked_phrases = ['lol', 'l0l', 'lolz', 'lol2', 'l0lz', 'l0l2', 'rofl', 'r0fl', 'ha', 'h4', 'haha', 'hah4', 'h4ha', 'h4h4', 'lo|', 'l0|', '|ol', '|o|', '|0l', '|0|', 'lo|z', 'lo|2', 'l0|z', 'l0|2', '|olz', '|ol2', '|o|z', '|o|2', '|0lz', '|0l2', '|0|z', '|0|2', 'rof|', 'r0f|', 'loi', 'l0i', 'iol', 'ioi', 'i0l', 'i0i', 'loiz', 'loi2', 'l0iz', 'l0i2', 'iolz', 'iol2', 'ioiz', 'ioi2', 'i0lz', 'i0l2', 'i0iz', 'i0i2', 'rofi', 'r0fi']
+blocked_phrases = ['lol', 'l0l', 'lolz', 'lol2', 'l0lz', 'l0l2', 'lel', 'l3l', 'lul', 'lulz', 'lul2', 'rofl', 'r0fl', 'ha', 'h4', 'haha', 'hah4', 'h4ha', 'h4h4', 'lo|', 'l0|', '|ol', '|o|', '|0l', '|0|', 'lo|z', 'lo|2', 'l0|z', 'l0|2', '|olz', '|ol2', '|o|z', '|o|2', '|0lz', '|0l2', '|0|z', '|0|2', 'le|', 'l3|', '|el', '|e|', '|3l', '|3|', 'lu|', '|ul', '|u|', 'lu|z', 'lu|2', '|ulz', '|ul2', '|u|z', '|u|2', 'rof|', 'r0f|', 'loi', 'l0i', 'iol', 'ioi', 'i0l', 'i0i', 'loiz', 'loi2', 'l0iz', 'l0i2', 'iolz', 'iol2', 'ioiz', 'ioi2', 'i0lz', 'i0l2', 'i0iz', 'i0i2', 'lei', 'l3i', 'iel', 'iei', 'i3l', 'i3i', 'lui', 'iul', 'iui', 'luiz', 'lui2', 'iulz', 'iul2', 'iuiz', 'iui2', 'rofi', 'r0fi']
 blocked_file = open('blocked.txt', 'w')
 ok_phrases = ['ok','k']
 
